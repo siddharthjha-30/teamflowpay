@@ -91,65 +91,65 @@
             </div>
         </div>
     </nav>
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div class="mb-6">
-            <div class="flex items-center gap-4 mb-2">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
+        <div class="mb-4 sm:mb-6">
+            <div class="flex items-center gap-2 sm:gap-4 mb-2">
                 <button type="button" onclick="history.back()"
-                    class="w-10 h-10 gradient-bg rounded-full flex items-center justify-center hover:shadow-lg transition">
-                    <i class="fas fa-arrow-left text-white text-sm"></i>
+                    class="w-9 h-9 sm:w-10 sm:h-10 gradient-bg rounded-full flex items-center justify-center hover:shadow-lg transition">
+                    <i class="fas fa-arrow-left text-white text-xs sm:text-sm"></i>
                 </button>
-                <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-0">Receive Money</h1>
+                <h1 class="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-0">Receive Money</h1>
             </div>
         </div>
-        <div class="grid lg:grid-cols-2 gap-6">
-            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-sm p-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+            <div class="bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl shadow-sm p-4 sm:p-6 lg:p-8">
                 <div class="text-center">
-                    <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-6">Scan QR Code</h3>
-                    <div class="inline-block p-6 bg-white border-4 border-purple-100 rounded-2xl mb-6">
-                        <div id="qrcode" class="w-48 h-48 flex items-center justify-center">
+                    <h3 class="text-lg sm:text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4 sm:mb-6">Scan QR Code</h3>
+                    <div class="inline-block p-3 sm:p-4 lg:p-6 bg-white border-2 sm:border-4 border-purple-100 rounded-xl sm:rounded-2xl mb-4 sm:mb-6">
+                        <div id="qrcode" class="w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 flex items-center justify-center">
                             <i class="fas fa-spinner fa-spin text-4xl text-purple-500"></i>
                         </div>
                     </div>
-                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                    <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mb-3 sm:mb-4 px-2">
                         Scan this QR code to send payment to your wallet
                     </p>
-                    <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-4 mb-4">
+                    <div class="bg-gray-50 dark:bg-gray-700 rounded-lg sm:rounded-xl p-3 sm:p-4 mb-3 sm:mb-4">
                         <p class="text-xs text-gray-600 dark:text-gray-400 mb-1">Your Wallet Address</p>
                         <div class="flex items-center gap-2 justify-center">
-                            <p class="font-mono text-sm text-gray-900 dark:text-gray-100 break-all" id="walletAddress">
+                            <p class="font-mono text-xs sm:text-sm text-gray-900 dark:text-gray-100 break-all" id="walletAddress">
                                 Loading...</p>
-                            <button onclick="copyAddress()" class="text-purple-600 hover:text-purple-700 transition">
-                                <i class="fas fa-copy"></i>
+                            <button onclick="copyAddress()" class="text-purple-600 hover:text-purple-700 transition flex-shrink-0">
+                                <i class="fas fa-copy text-sm"></i>
                             </button>
                         </div>
                     </div>
-                    <div class="space-y-3">
+                    <div class="space-y-2 sm:space-y-3">
                         <button onclick="downloadQR()"
-                            class="w-full gradient-bg text-white font-semibold py-3 rounded-xl hover:shadow-lg transition">
-                            <i class="fas fa-download mr-2"></i>
+                            class="w-full gradient-bg text-white font-semibold py-2.5 sm:py-3 rounded-lg sm:rounded-xl hover:shadow-lg transition text-sm sm:text-base">
+                            <i class="fas fa-download mr-1.5 sm:mr-2 text-xs sm:text-sm"></i>
                             Download QR Code
                         </button>
                         <button onclick="sharePaymentLink()"
-                            class="w-full border-2 border-purple-600 text-purple-600 font-semibold py-3 rounded-xl hover:bg-purple-50 transition">
-                            <i class="fas fa-share-alt mr-2"></i>
+                            class="w-full border-2 border-purple-600 text-purple-600 font-semibold py-2.5 sm:py-3 rounded-lg sm:rounded-xl hover:bg-purple-50 dark:hover:bg-purple-900/20 transition text-sm sm:text-base">
+                            <i class="fas fa-share-alt mr-1.5 sm:mr-2 text-xs sm:text-sm"></i>
                             Share Payment Link
                         </button>
                     </div>
                 </div>
             </div>
             <div>
-                <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-sm p-6 mb-6">
-                    <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4">Payment Link</h3>
-                    <div class="mb-4">
-                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <div class="bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl shadow-sm p-4 sm:p-6 mb-4 sm:mb-6">
+                    <h3 class="text-lg sm:text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3 sm:mb-4">Payment Link</h3>
+                    <div class="mb-3 sm:mb-4">
+                        <label class="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                             Request Amount (Optional)
                         </label>
-                        <div class="flex gap-3">
+                        <div class="flex gap-2 sm:gap-3">
                             <input type="number" id="requestAmount" placeholder="0.00" step="0.01" min="0"
-                                class="flex-1 px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition"
+                                class="flex-1 px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 rounded-lg sm:rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition"
                                 oninput="generatePaymentLink()">
                             <select id="requestCurrency"
-                                class="px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 rounded-xl focus:ring-2 focus:ring-purple-500 transition"
+                                class="px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 rounded-lg sm:rounded-xl focus:ring-2 focus:ring-purple-500 transition"
                                 onchange="generatePaymentLink()">
                                 <option value="POL">POL</option>
                                 <option value="USD">USD</option>
@@ -159,80 +159,80 @@
                         </div>
                     </div>
                     <div
-                        class="bg-purple-50 dark:bg-purple-900/30 rounded-xl p-4 mb-4 border border-purple-100 dark:border-purple-800">
-                        <p class="text-xs text-gray-600 dark:text-gray-400 mb-2">Your Payment Link</p>
+                        class="bg-purple-50 dark:bg-purple-900/30 rounded-lg sm:rounded-xl p-3 sm:p-4 mb-3 sm:mb-4 border border-purple-100 dark:border-purple-800">
+                        <p class="text-xs text-gray-600 dark:text-gray-400 mb-1.5 sm:mb-2">Your Payment Link</p>
                         <div class="flex items-center gap-2">
-                            <p class="text-sm text-gray-900 dark:text-gray-100 flex-1 truncate" id="paymentLink">
+                            <p class="text-xs sm:text-sm text-gray-900 dark:text-gray-100 flex-1 truncate" id="paymentLink">
                                 Loading...
                             </p>
                             <button onclick="copyPaymentLink()"
-                                class="text-purple-600 hover:text-purple-700 dark:text-purple-400">
-                                <i class="fas fa-copy"></i>
+                                class="text-purple-600 hover:text-purple-700 dark:text-purple-400 flex-shrink-0">
+                                <i class="fas fa-copy text-sm"></i>
                             </button>
                         </div>
                     </div>
-                    <div class="grid grid-cols-3 gap-3">
+                    <div class="grid grid-cols-3 gap-2 sm:gap-3">
                         <button onclick="shareVia('whatsapp')"
-                            class="flex flex-col items-center gap-2 p-3 rounded-xl border border-gray-200 hover:border-green-500 hover:bg-green-50 transition">
-                            <i class="fab fa-whatsapp text-2xl text-green-600"></i>
-                            <span class="text-xs text-gray-600">WhatsApp</span>
+                            class="flex flex-col items-center gap-1 sm:gap-2 p-2 sm:p-3 rounded-lg sm:rounded-xl border border-gray-200 dark:border-gray-600 hover:border-green-500 hover:bg-green-50 dark:hover:bg-green-900/20 transition">
+                            <i class="fab fa-whatsapp text-xl sm:text-2xl text-green-600 dark:text-green-500"></i>
+                            <span class="text-[10px] sm:text-xs text-gray-600 dark:text-gray-400">WhatsApp</span>
                         </button>
                         <button onclick="shareVia('telegram')"
-                            class="flex flex-col items-center gap-2 p-3 rounded-xl border border-gray-200 hover:border-blue-500 hover:bg-blue-50 transition">
-                            <i class="fab fa-telegram text-2xl text-blue-600"></i>
-                            <span class="text-xs text-gray-600">Telegram</span>
+                            class="flex flex-col items-center gap-1 sm:gap-2 p-2 sm:p-3 rounded-lg sm:rounded-xl border border-gray-200 dark:border-gray-600 hover:border-blue-500 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition">
+                            <i class="fab fa-telegram text-xl sm:text-2xl text-blue-600 dark:text-blue-500"></i>
+                            <span class="text-[10px] sm:text-xs text-gray-600 dark:text-gray-400">Telegram</span>
                         </button>
                         <button onclick="shareVia('email')"
-                            class="flex flex-col items-center gap-2 p-3 rounded-xl border border-gray-200 hover:border-red-500 hover:bg-red-50 transition">
-                            <i class="fas fa-envelope text-2xl text-red-600"></i>
-                            <span class="text-xs text-gray-600">Email</span>
+                            class="flex flex-col items-center gap-1 sm:gap-2 p-2 sm:p-3 rounded-lg sm:rounded-xl border border-gray-200 dark:border-gray-600 hover:border-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition">
+                            <i class="fas fa-envelope text-xl sm:text-2xl text-red-600 dark:text-red-500"></i>
+                            <span class="text-[10px] sm:text-xs text-gray-600 dark:text-gray-400">Email</span>
                         </button>
                     </div>
                 </div>
-                <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-sm p-6">
-                    <div class="flex items-center justify-between mb-4">
-                        <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">Recent Incoming Payments</h3>
+                <div class="bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl shadow-sm p-4 sm:p-6">
+                    <div class="flex items-center justify-between mb-3 sm:mb-4">
+                        <h3 class="text-base sm:text-lg font-semibold text-gray-900 dark:text-gray-100">Recent Payments</h3>
                         <button onclick="refreshPayments()"
-                            class="px-3 py-1.5 bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 rounded-lg hover:bg-purple-200 dark:hover:bg-purple-900/50 transition text-sm flex items-center gap-2">
-                            <i class="fas fa-sync-alt text-xs"></i>
-                            <span>Refresh</span>
+                            class="px-2 sm:px-3 py-1 sm:py-1.5 bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 rounded-md sm:rounded-lg hover:bg-purple-200 dark:hover:bg-purple-900/50 transition text-xs sm:text-sm flex items-center gap-1 sm:gap-2">
+                            <i class="fas fa-sync-alt text-[10px] sm:text-xs"></i>
+                            <span class="hidden sm:inline">Refresh</span>
                         </button>
                     </div>
-                    <div class="space-y-3" id="incomingPayments">
-                        <div class="text-center py-8">
-                            <i class="fas fa-spinner fa-spin text-3xl text-purple-500 mb-3"></i>
-                            <p class="text-sm text-gray-500 dark:text-gray-400">Loading transactions...</p>
+                    <div class="space-y-2 sm:space-y-3" id="incomingPayments">
+                        <div class="text-center py-6 sm:py-8">
+                            <i class="fas fa-spinner fa-spin text-2xl sm:text-3xl text-purple-500 mb-2 sm:mb-3"></i>
+                            <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Loading transactions...</p>
                         </div>
                     </div>
                     <a href="history.html"
-                        class="block text-center text-purple-600 hover:text-purple-700 font-medium mt-4 text-sm">
+                        class="block text-center text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-medium mt-3 sm:mt-4 text-xs sm:text-sm">
                         View All Transactions
                     </a>
                 </div>
             </div>
         </div>
-        <div class="mt-10 bg-blue-50 rounded-2xl p-6 border border-blue-100">
-            <div class="flex items-start gap-3">
-                <div class="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <i class="fas fa-info text-white"></i>
+        <div class="mt-6 sm:mt-10 bg-blue-50 dark:bg-blue-900/20 rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-blue-100 dark:border-blue-800">
+            <div class="flex items-start gap-2 sm:gap-3">
+                <div class="w-8 h-8 sm:w-10 sm:h-10 bg-blue-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-info text-white text-sm sm:text-base"></i>
                 </div>
                 <div class="flex-1">
-                    <h4 class="font-semibold text-gray-900 mb-2">How to Receive Payments</h4>
-                    <ul class="space-y-2 text-sm text-gray-700">
-                        <li class="flex items-start gap-2">
-                            <span class="text-blue-600 font-bold">1.</span>
+                    <h4 class="text-sm sm:text-base font-semibold text-gray-900 dark:text-gray-100 mb-2">How to Receive Payments</h4>
+                    <ul class="space-y-1.5 sm:space-y-2 text-xs sm:text-sm text-gray-700 dark:text-gray-300">
+                        <li class="flex items-start gap-1.5 sm:gap-2">
+                            <span class="text-blue-600 dark:text-blue-400 font-bold flex-shrink-0">1.</span>
                             <span>Share your QR code or wallet address with the sender</span>
                         </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-blue-600 font-bold">2.</span>
+                        <li class="flex items-start gap-1.5 sm:gap-2">
+                            <span class="text-blue-600 dark:text-blue-400 font-bold flex-shrink-0">2.</span>
                             <span>Optionally specify an amount you want to receive</span>
                         </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-blue-600 font-bold">3.</span>
+                        <li class="flex items-start gap-1.5 sm:gap-2">
+                            <span class="text-blue-600 dark:text-blue-400 font-bold flex-shrink-0">3.</span>
                             <span>Wait for the transaction to be confirmed on the blockchain</span>
                         </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-blue-600 font-bold">4.</span>
+                        <li class="flex items-start gap-1.5 sm:gap-2">
+                            <span class="text-blue-600 dark:text-blue-400 font-bold flex-shrink-0">4.</span>
                             <span>Check your dashboard for the received funds</span>
                         </li>
                     </ul>
