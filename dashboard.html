@@ -200,7 +200,7 @@
       <!-- AI Command Agent -->
       <div class="mb-6">
         <div
-          class="bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl shadow-lg p-6 text-white"
+          class="bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl shadow-lg p-4 sm:p-6 text-white"
         >
           <div class="flex items-center gap-3 mb-4">
             <div
@@ -209,26 +209,28 @@
               <i class="fas fa-magic text-xl"></i>
             </div>
             <div>
-              <h3 class="text-xl font-bold">AI Command Agent</h3>
-              <p class="text-purple-100 text-sm">
+              <h3 class="text-lg sm:text-xl font-bold">AI Command Agent</h3>
+              <p class="text-purple-100 text-xs sm:text-sm">
                 Tell me what you want to do in plain English
               </p>
             </div>
           </div>
 
-          <div class="bg-white/10 backdrop-blur rounded-xl p-4 mb-3">
-            <div class="flex items-start gap-3">
+          <div class="bg-white/10 backdrop-blur rounded-xl p-3 sm:p-4 mb-3">
+            <div
+              class="flex flex-col sm:flex-row items-stretch sm:items-start gap-2 sm:gap-3"
+            >
               <input
                 type="text"
                 id="aiCommandInput"
-                placeholder='Try: "Create a payment for ₹12,000 to Ditre Italia due Monday"'
-                class="flex-1 bg-white/20 border border-white/30 rounded-lg px-4 py-3 text-white placeholder-purple-200 focus:outline-none focus:ring-2 focus:ring-white/50"
+                placeholder='Try: "Create payment ₹12,000 to Ditre Italia"'
+                class="flex-1 bg-white/20 border border-white/30 rounded-lg px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base text-white placeholder-purple-200 focus:outline-none focus:ring-2 focus:ring-white/50"
                 onkeypress="if(event.key==='Enter') executeAICommand()"
               />
               <button
                 onclick="executeAICommand()"
                 id="aiCommandBtn"
-                class="bg-white text-purple-600 px-6 py-3 rounded-lg font-medium hover:bg-purple-50 transition flex items-center gap-2 whitespace-nowrap"
+                class="bg-white text-purple-600 px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-medium hover:bg-purple-50 transition flex items-center justify-center gap-2 whitespace-nowrap text-sm sm:text-base"
               >
                 <i class="fas fa-paper-plane"></i>
                 <span>Send</span>
@@ -238,25 +240,30 @@
 
           <div
             id="aiResponseArea"
-            class="hidden bg-white/10 backdrop-blur rounded-xl p-4 max-h-48 overflow-y-auto"
+            class="hidden bg-white/10 backdrop-blur rounded-xl p-3 sm:p-4 max-h-48 overflow-y-auto"
           >
-            <div class="flex items-start gap-3">
-              <i class="fas fa-robot text-xl mt-1"></i>
+            <div class="flex items-start gap-2 sm:gap-3">
+              <i class="fas fa-robot text-lg sm:text-xl mt-1"></i>
               <div class="flex-1">
-                <p class="text-sm font-medium mb-1">AI Response:</p>
-                <p id="aiResponseText" class="text-sm text-purple-100"></p>
+                <p class="text-xs sm:text-sm font-medium mb-1">AI Response:</p>
+                <p
+                  id="aiResponseText"
+                  class="text-xs sm:text-sm text-purple-100"
+                ></p>
               </div>
             </div>
           </div>
 
-          <div class="flex gap-2 mt-3 text-xs text-purple-100">
-            <span class="bg-white/10 px-3 py-1 rounded-full"
+          <div
+            class="flex flex-wrap gap-1.5 sm:gap-2 mt-3 text-xs text-purple-100"
+          >
+            <span class="bg-white/10 px-2 sm:px-3 py-1 rounded-full"
               >💡 Create payments</span
             >
-            <span class="bg-white/10 px-3 py-1 rounded-full"
+            <span class="bg-white/10 px-2 sm:px-3 py-1 rounded-full"
               >📊 Export reports</span
             >
-            <span class="bg-white/10 px-3 py-1 rounded-full"
+            <span class="bg-white/10 px-2 sm:px-3 py-1 rounded-full"
               >🔔 Set reminders</span
             >
           </div>
@@ -726,7 +733,8 @@
                 ? `
               <div class="mt-2 pt-2 border-t border-gray-200 dark:border-gray-600">
                 <p class="text-sm text-gray-600 dark:text-gray-400">${formatResultSummary(
-                  cmd
+                  action,
+                  cmd.result.data
                 )}</p>
               </div>
             `
