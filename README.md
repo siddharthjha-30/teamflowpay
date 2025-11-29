@@ -1,286 +1,376 @@
-# FlowPay - Cross-Border Crypto Payment Platform
+# FlowPay - AI-Powered Payment Management System
 
-![FlowPay](https://img.shields.io/badge/FlowPay-Polygon-8247E5?style=for-the-badge)
-![Status](https://img.shields.io/badge/Status-MVP-green?style=for-the-badge)
-![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)
+A modern payment management system built with blockchain technology and AI-powered natural language processing for Polygon network.
 
-**Fast, Smart, Global Payments** - A modern fintech web application built on the Polygon blockchain for seamless cross-border cryptocurrency payments.
+## Features
 
-## 🚀 Features
+### Core Features
 
-### 🔐 Authentication
+- 🔐 Secure Web3Auth authentication
+- 💳 Cryptocurrency payments on Polygon network
+- 📊 Real-time balance tracking
+- 📝 Transaction history
+- 🌓 Dark mode support
+- 📱 Responsive design
 
-- **Google OAuth Login** - Real Google OAuth 2.0 integration with Google Identity Services
-- **MetaMask Integration** - Connect your crypto wallet directly
-- Secure session management
-- JWT token handling for Google authentication
-- Demo mode fallback when OAuth not configured
+### AI-Powered Features
 
-### 📊 Dashboard
+- 🤖 Natural language command processing
+- 💬 Conversational payment creation
+- 📋 Automated payment management
+- 🔔 Smart balance reminders
+- 📊 Intelligent report generation
+- 💾 Command history with replay functionality
 
-- **Wallet Overview** - View your wallet address and MATIC balance
-- **Real-time Balance** - Live balance updates with USD conversion
-- **Recent Transactions** - Quick access to your latest 5 transactions
-- **AI Insights** - Smart recommendations including:
-  - Best time to send payments (gas fee optimization)
-  - Rate predictions for MATIC
-  - Network status monitoring
+## Tech Stack
 
-### 💸 Send Money
+### Frontend
 
-- **Multi-Currency Support** - Send in MATIC, USD, EUR, or INR
-- **Real-time Conversion** - Instant currency conversion display
-- **Gas Fee Estimation** - Transparent fee calculation
-- **Recent Recipients** - Quick access to frequently used addresses
-- **Transaction Confirmation** - Detailed success modal with transaction hash
-- **PolygonScan Integration** - Direct links to view transactions on blockchain explorer
+- HTML5, CSS3, JavaScript (ES6+)
+- TailwindCSS for styling
+- Firebase Firestore for data persistence
+- Web3Auth for authentication
+- Ethers.js for blockchain interactions
 
-### 📥 Receive Money
+### Backend
 
-- **QR Code Generation** - Instant QR code for your wallet address
-- **Payment Links** - Shareable payment request links
-- **Amount Specification** - Optional amount requests
-- **Social Sharing** - Share via WhatsApp, Telegram, or Email
-- **Incoming Payment Tracking** - Monitor pending and completed payments
+- Node.js with Express.js
+- Groq AI (llama-3.3-70b-versatile) for NLP
+- Axios for API requests
+- CORS enabled
+- Serverless deployment ready
 
-### 📜 Transaction History
+### Blockchain
 
-- **Complete Transaction List** - View all your payment history
-- **Advanced Filters** - Filter by:
-  - Transaction type (Sent/Received)
-  - Status (Success/Pending/Failed)
-  - Time range (Today/Week/Month/Year)
-  - Search by address or hash
-- **Pagination** - Easy navigation through transaction pages
-- **Export Options** - Export to CSV or PDF
-- **Mobile Responsive** - Optimized card view for mobile devices
+- Polygon Amoy Testnet
+- POL (Polygon) token
+- Smart contract interactions
 
-## 🛠️ Tech Stack
-
-- **Frontend**: HTML5, TailwindCSS, Vanilla JavaScript
-- **Blockchain**: Polygon (MATIC)
-- **Icons**: Font Awesome 6
-- **Fonts**: Google Fonts (Inter)
-- **CDN**: TailwindCSS CDN for rapid development
-
-## 📁 Project Structure
-
-```
-flow/
-├── index.html              # Login/Landing page
-├── dashboard.html          # Main dashboard
-├── send.html              # Send money page
-├── receive.html           # Receive money page
-├── history.html           # Transaction history
-├── js/
-│   ├── config.js         # Configuration (Google OAuth, API keys)
-│   ├── auth.js           # Authentication logic
-│   ├── dashboard.js      # Dashboard functionality
-│   ├── send.js           # Send transaction logic
-│   ├── receive.js        # Receive payment logic
-│   └── history.js        # Transaction history & filters
-└── README.md             # Project documentation
-```
-
-## 🚀 Getting Started
+## Installation
 
 ### Prerequisites
 
-- Modern web browser (Chrome, Firefox, Safari, Edge)
-- MetaMask extension (optional, for wallet connection)
-- Local web server or Live Server extension for VS Code
-- Google Cloud account (for Google OAuth setup)
+- Node.js v18+ installed
+- Git installed
+- A Groq API key (free at https://console.groq.com/keys)
 
-### Installation
+### Backend Setup
 
-1. **Clone or Download** the project to your local machine
+1. Clone the repository:
 
-2. **Configure Google OAuth** (Required for production, optional for demo):
+```bash
+git clone https://github.com/siddharthjha-30/teamflowpay.git
+cd teamflowpay/backend
+```
 
-   - See [GOOGLE_OAUTH_SETUP.md](GOOGLE_OAUTH_SETUP.md) for detailed instructions
-   - Create a Google Cloud project
-   - Get your OAuth Client ID
-   - Update `js/config.js` with your Client ID
-   - **Note**: App works in demo mode without configuration
+2. Install dependencies:
 
-3. **Open with a local server**:
+```bash
+npm install
+```
 
-   **Option A: Using VS Code Live Server**
+3. Configure environment variables:
 
-   - Install "Live Server" extension in VS Code
-   - Right-click on `index.html`
-   - Select "Open with Live Server"
+```bash
+cp .env.example .env
+```
 
-   **Option B: Using Python**
+Edit `.env` and add your Groq API key:
 
-   ```bash
-   # Python 3
-   python -m http.server 8000
+```env
+PORT=3000
+NODE_ENV=development
+ALLOWED_ORIGINS=http://localhost:3000,http://127.0.0.1:5500
+GROQ_API_KEY=your_groq_api_key_here
+```
 
-   # Then visit http://localhost:8000
-   ```
+4. Start the server:
 
-   **Option C: Using Node.js**
+```bash
+npm start
+```
 
-   ```bash
-   npx serve
-   ```
+Backend will run at: `http://localhost:3000`
 
-4. **Access the application**:
-   - Navigate to the local server URL (e.g., `http://localhost:8000`)
-   - You'll see the FlowPay login page
+### Frontend Setup
 
-### Demo Usage
+1. Open `index.html` in a web browser or use a local server:
 
-1. **Login**:
-   - Click "Continue with Google" or "Connect MetaMask Wallet"
-   - Demo mode works without actual MetaMask installation
-2. **Explore Dashboard**:
-   - View mock wallet balance and transactions
-   - Check AI insights and recommendations
-3. **Send Payment**:
-   - Enter a receiver address (or use mock: `0x8ba1f109551bD432803012645Ac136ddd64DBA72`)
-   - Enter amount and select currency
-   - Click "Send Payment"
-   - View transaction confirmation
-4. **Receive Payment**:
-   - View your wallet QR code
-   - Generate payment links
-   - Share via social platforms
-5. **Transaction History**:
-   - Browse all transactions
-   - Apply filters and search
-   - Export data
+```bash
+python -m http.server 5500
+```
 
-## 🎨 Design Features
+2. Access the application at `http://127.0.0.1:5500`
 
-### UI/UX Highlights
+## AI Command System
 
-- ✨ Clean, minimalist design
-- 🎨 Purple gradient brand colors (#667eea to #764ba2)
-- 📱 Fully responsive (mobile, tablet, desktop)
-- 🌈 Smooth transitions and hover effects
-- 🎯 Intuitive navigation
-- 💡 Clear visual hierarchy
-- ⚡ Fast loading with CDN resources
+### Available Commands
 
-### Accessibility
+The AI agent understands natural language and can execute these actions:
 
-- Semantic HTML5
-- Clear contrast ratios
-- Keyboard navigation support
-- Readable font sizes
-- Descriptive labels and placeholders
+1. **Create Payment**
 
-## 🔧 Configuration
+   - "Create a payment for ₹12,000 to Ditre Italia due Monday"
+   - "Add new payment of 5000 INR to Acme Corp tomorrow"
 
-### Mock Data
+2. **Show Pending Payments**
 
-The application uses mock data for demonstration. To integrate with real blockchain:
+   - "Show me all pending payments"
+   - "List outstanding payments"
 
-1. **Update wallet connection** in `js/auth.js`:
+3. **Export Reports**
 
-   - Implement actual MetaMask connection
-   - Handle network switching to Polygon
+   - "Export monthly report"
+   - "Generate payment report for last week"
 
-2. **Add blockchain interaction** in `js/send.js`:
+4. **Set Reminders**
 
-   - Integrate Web3.js or Ethers.js
-   - Implement actual transaction sending
-   - Add gas estimation logic
+   - "Remind me to pay vendor tomorrow"
+   - "Set reminder for invoice on Friday"
 
-3. **Fetch real data** in `js/dashboard.js` and `js/history.js`:
-   - Connect to Polygon RPC
-   - Fetch real balance and transactions
-   - Use Polygon APIs for transaction history
+5. **Add Client**
 
-### Exchange Rates
+   - "Add new client called TechCorp"
+   - "Register vendor named GlobalSupply"
 
-Update exchange rates in `js/send.js`:
+6. **Check Balance**
+   - "Check if I have enough balance for tomorrow's payments"
+   - "Warn me about low balance"
+
+### API Endpoints
+
+#### POST /api/agent/command
+
+Process natural language command with AI.
+
+**Request:**
+
+```json
+{
+  "prompt": "Create a payment for ₹12,000 to Ditre Italia due Monday"
+}
+```
+
+**Response:**
+
+```json
+{
+  "success": true,
+  "prompt": "Create a payment for ₹12,000 to Ditre Italia due Monday",
+  "action": "create_payment",
+  "command": {
+    "action": "create_payment",
+    "parameters": {
+      "amount": 12000,
+      "currency": "INR",
+      "recipient": "Ditre Italia",
+      "dueDate": "2025-12-02T00:00:00.000Z"
+    }
+  },
+  "data": {
+    "id": "uuid",
+    "vendor": "Ditre Italia",
+    "amount": 12000,
+    "due_date": "2025-12-02"
+  }
+}
+```
+
+#### POST /api/agent/execute
+
+Execute a pre-formed JSON command.
+
+**Request:**
+
+```json
+{
+  "action": "show_pending_payments",
+  "parameters": {}
+}
+```
+
+#### GET /api/agent/actions
+
+Get list of available actions.
+
+#### GET /health
+
+Health check endpoint.
+
+## Deployment
+
+### Deploy to Vercel
+
+#### Backend Deployment
+
+1. Push code to GitHub
+
+2. Go to https://vercel.com/new
+
+3. Import your repository
+
+4. Configure:
+
+   - **Root Directory:** `backend`
+   - **Framework:** Other
+   - **Build Command:** (leave empty)
+   - **Install Command:** `npm install`
+
+5. Add environment variables:
+
+   - `GROQ_API_KEY` - Your Groq API key
+   - `NODE_ENV` - `production`
+   - `ALLOWED_ORIGINS` - Your frontend URL
+
+6. Deploy
+
+#### Frontend Deployment
+
+1. Go to https://vercel.com/new
+
+2. Import same repository
+
+3. Configure:
+
+   - **Root Directory:** `./` (root)
+   - **Framework:** Other
+
+4. Update `js/config.js` with your backend URL:
 
 ```javascript
-const exchangeRates = {
-  MATIC: 1,
-  USD: 0.68,
-  EUR: 0.62,
-  INR: 56.5,
+url: "https://your-backend.vercel.app";
+```
+
+5. Deploy
+
+## Project Structure
+
+```
+teamflowpay/
+├── backend/
+│   ├── services/
+│   │   ├── aiService.js          # Groq AI integration
+│   │   └── commandExecutor.js    # Command execution logic
+│   ├── routes/
+│   │   └── agent.js               # API routes
+│   ├── data/
+│   │   └── database.js            # In-memory database
+│   ├── server.js                  # Express server
+│   ├── package.json
+│   ├── .env.example
+│   └── vercel.json
+├── js/
+│   ├── auth.js                    # Authentication logic
+│   ├── config.js                  # Configuration
+│   ├── dashboard.js               # Dashboard logic
+│   ├── firebase-config.js         # Firebase setup
+│   ├── firebase-service.js        # Firebase operations
+│   ├── theme.js                   # Dark mode toggle
+│   └── ...
+├── css/
+│   └── styles.css
+├── assets/
+│   └── images/
+├── index.html                     # Landing page
+├── dashboard.html                 # Main dashboard
+├── send.html                      # Send payment
+├── receive.html                   # Receive payment
+├── history.html                   # Transaction history
+├── profile.html                   # User profile
+├── vercel.json                    # Frontend Vercel config
+└── README.md
+```
+
+## Configuration
+
+### Environment Variables
+
+Backend `.env` file:
+
+```env
+PORT=3000
+NODE_ENV=development|production
+ALLOWED_ORIGINS=http://localhost:3000,https://your-frontend.vercel.app
+GROQ_API_KEY=your_groq_api_key_here
+```
+
+### Firebase Configuration
+
+Update `js/firebase-config.js` with your Firebase credentials:
+
+```javascript
+const firebaseConfig = {
+  apiKey: "your-api-key",
+  authDomain: "your-auth-domain",
+  projectId: "your-project-id",
+  storageBucket: "your-storage-bucket",
+  messagingSenderId: "your-sender-id",
+  appId: "your-app-id",
 };
 ```
 
-## 🌐 Browser Support
+## Development
 
-- ✅ Chrome (recommended)
-- ✅ Firefox
-- ✅ Safari
-- ✅ Edge
-- ✅ Opera
+### Running Locally
 
-## 📝 Features Roadmap
+1. Start backend:
 
-### Phase 1 (Current - MVP)
+```bash
+cd backend
+npm start
+```
 
-- ✅ User authentication
-- ✅ Wallet dashboard
-- ✅ Send/Receive payments
-- ✅ Transaction history
-- ✅ Basic UI/UX
+2. Open frontend in browser:
 
-### Phase 2 (Planned)
+```bash
+open index.html
+```
 
-- 🔲 Real MetaMask integration
-- 🔲 Actual blockchain transactions
-- 🔲 Multi-wallet support
-- 🔲 Real-time exchange rates API
-- 🔲 Gas fee optimization
+### Testing AI Commands
 
-### Phase 3 (Future)
+1. Open dashboard
 
-- 🔲 Multi-chain support (Ethereum, BSC, etc.)
-- 🔲 DeFi integration
-- 🔲 NFT support
-- 🔲 Advanced analytics
-- 🔲 Mobile app (React Native)
+2. Find "AI Command Agent" section
 
-## 🤝 Contributing
+3. Type natural language commands:
+   - "Create a payment for ₹5000 to Test Corp due tomorrow"
+   - "Show pending payments"
+   - "Check balance reminders"
 
-This is a hackathon MVP project. Contributions, issues, and feature requests are welcome!
+## Security
 
-1. Fork the project
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+- Environment variables protected by `.gitignore`
+- API key stored securely in backend
+- CORS configured for allowed origins only
+- Firebase security rules configured
+- Wallet private keys never exposed
 
-## 📄 License
+## Browser Support
 
-This project is licensed under the MIT License.
+- Chrome 90+
+- Firefox 88+
+- Safari 14+
+- Edge 90+
 
-## 👥 Team
+## License
 
-Built with ❤️ for hackathon demonstration
+MIT License - see LICENSE file for details
 
-## 📧 Contact
+## Contributors
 
-For questions or feedback, please open an issue in the repository.
+- Siddharth Jha (@siddharthjha-30)
 
-## 🙏 Acknowledgments
+## Support
 
-- **Polygon** - For the blockchain infrastructure
-- **TailwindCSS** - For the utility-first CSS framework
-- **Font Awesome** - For the beautiful icons
-- **Google Fonts** - For the Inter font family
+For issues and questions:
 
----
+- GitHub Issues: https://github.com/siddharthjha-30/teamflowpay/issues
+- Email: siddharthjha-30@github.com
 
-**Note**: This is a demo/MVP application with mock data. For production use, implement proper blockchain integration, security measures, and real-time data fetching.
+## Acknowledgments
 
-## 🎯 Hackathon Highlights
-
-- ⚡ **Rapid Development** - Built with modern web technologies
-- 🎨 **Professional Design** - Clean, minimalist UI suitable for fintech
-- 📱 **Responsive** - Works seamlessly on all devices
-- 🚀 **Production-Ready UI** - Just needs blockchain backend integration
-- 💡 **Innovative Features** - AI insights for optimal transaction timing
-- 🌍 **Global Focus** - Multi-currency support for cross-border payments
-
-Perfect for demonstrating fintech concepts and blockchain payment flows! 🎉
+- Groq AI for free and fast AI inference
+- Polygon for blockchain infrastructure
+- Vercel for hosting
+- Firebase for data storage
+- Web3Auth for authentication

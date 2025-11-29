@@ -31,11 +31,12 @@ const CONFIG = {
     version: "1.0.0",
     defaultCurrency: "POL",
     sessionTimeout: 604800,
+    // Backend API URL - Update after deploying backend to Vercel
     url:
       window.location.hostname === "127.0.0.1" ||
       window.location.hostname === "localhost"
-        ? `http://${window.location.host}`
-        : "https://teamflowpay.vercel.app",
+        ? `http://localhost:3000`
+        : "https://flowpay-backend.vercel.app", // Update this with your backend URL
     paymentPath: "/send.html",
   },
 };

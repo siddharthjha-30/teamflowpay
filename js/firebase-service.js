@@ -32,6 +32,119 @@ class FirebaseService {
       return false;
     }
   }
+
+  // AI Command History Methods
+  async saveAICommand(userId, command, result) {
+    if (!this.initialized) {
+      await this.init();
+    }
+    try {
+      const commandData = {
+        userId: userId || "anonymous",
+        command: {
+          prompt: command.prompt,
+          action: command.action,
+          jsonCommand: command.jsonCommand,
+        },
+        result: result,
+        success: result.success !== false,
+        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+        createdAt: new Date().toISOString(),
+      };
+
+      await this.db.collection("ai_commands").add(commandData);
+
+      console.log("✅ AI command saved to Firebase");
+      return true;
+    } catch (error) {
+      console.error("⚠️ Error saving AI command to Firebase:", error.message);
+      console.log("💡 Command will still work, just not saved to history");
+      // Don't throw error - allow command execution to continue
+      return false;
+    }
+  }
+
+  async getAICommandHistory(userId, limit = 50) {
+    console.log("🔍 [Firebase] getAICommandHistory called");
+    console.log("👤 [Firebase] User ID:", userId);
+    console.log("📊 [Firebase] Limit:", limit);
+
+    if (!this.initialized) {
+      console.log("⚙️ [Firebase] Not initialized, initializing now...");
+      await this.init();
+    }
+
+    try {
+      console.log(
+        "📡 [Firebase] Creating query (without index requirement)..."
+      );
+      // Query by userId only, then sort in JavaScript to avoid index requirement
+      const snapshot = await this.db
+        .collection("ai_commands")
+        .where("userId", "==", userId || "anonymous")
+        .get();
+
+      console.log(
+        "📦 [Firebase] Query executed. Documents found:",
+        snapshot.size
+      );
+
+      const commands = [];
+      snapshot.forEach((doc) => {
+        const data = doc.data();
+        console.log("📄 [Firebase] Document:", doc.id, data);
+        commands.push({
+          id: doc.id,
+          ...data,
+          timestamp:
+            data.createdAt ||
+            data.timestamp?.toDate?.()?.toISOString() ||
+            new Date().toISOString(),
+        });
+      });
+
+      // Sort by timestamp in JavaScript (newest first)
+      commands.sort((a, b) => {
+        const timeA = new Date(a.timestamp).getTime();
+        const timeB = new Date(b.timestamp).getTime();
+        return timeB - timeA; // Descending order
+      });
+
+      // Apply limit after sorting
+      const limitedCommands = commands.slice(0, limit);
+
+      console.log(
+        `✅ [Firebase] Loaded ${limitedCommands.length} commands from history`
+      );
+      console.log("📋 [Firebase] Commands:", limitedCommands);
+      return limitedCommands;
+    } catch (error) {
+      console.error("❌ [Firebase] Error fetching AI command history:", error);
+      console.error("Error code:", error.code);
+      console.error("Error message:", error.message);
+      console.log("💡 History feature requires proper Firebase permissions");
+      return [];
+    }
+  }
+
+  async rerunAICommand(commandId) {
+    if (!this.initialized) {
+      await this.init();
+    }
+    try {
+      const doc = await this.db.collection("ai_commands").doc(commandId).get();
+
+      if (!doc.exists) {
+        throw new Error("Command not found");
+      }
+
+      return doc.data().jsonCommand;
+    } catch (error) {
+      console.error("❌ Error re-running command:", error);
+      throw error;
+    }
+  }
+
   async saveTransaction(walletAddress, transaction) {
     if (!this.initialized) {
       return false;
